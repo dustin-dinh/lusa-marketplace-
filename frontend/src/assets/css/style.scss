@@ -1,0 +1,198 @@
+// Variables - cập nhật theme xanh dương sáng nổi bật
+$primary-color: #0d6efd;      // Xanh dương sáng chủ đạo (nổi bật, modern)
+$primary-dark: #0a58ca;       // Phiên bản tối hơn cho footer bg
+$secondary-color: #6c757d;
+$text-color: #212529;         // Đen nhạt, dễ đọc
+$link-color: #0d6efd;         // Link thường cũng xanh dương
+$bg-color: #fff;
+$border-radius: 8px;          // Bo tròn hơn tí cho modern
+$box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);  // Shadow xanh nhẹ, nổi bật
+$container-max-width: 1200px;
+$header-height: 80px;         // Tăng tí cho thoáng
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: $text-color;
+}
+
+// Header - trắng sạch, text xanh dương nổi bật
+.header {
+  background: linear-gradient(to bottom, #ffffff, #f0f8ff);  // Gradient nhẹ xanh nhạt → tươi sáng
+  box-shadow: $box-shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header .container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+}
+
+.header .logo a {
+  font-size: 28px;
+  font-weight: bold;
+  color: $primary-dark;  // Xanh đậm cho logo nổi
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.header .nav-list {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.header .nav-link {
+  color: $primary-dark;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s;
+
+  &:hover,
+  &.active {  // Active + hover cùng style nổi bật
+    color: $primary-color;
+  }
+
+  // Underline effect nổi bật khi hover/active
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -8px;
+    left: 0;
+    background-color: $primary-color;
+    transition: width 0.3s;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+}
+
+// Responsive header
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 20px;
+  }
+
+  .header .nav-list {
+    margin-top: 15px;
+    gap: 25px;
+  }
+}
+
+// Footer - xanh dương đậm, text trắng → nổi bật mạnh
+.footer {
+  background-color: $primary-dark;  // Xanh đậm
+  color: #fff;
+  padding: 60px 0 30px;
+  margin-top: auto;
+}
+
+.footer .container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #fff;  // Trắng cho nổi
+}
+
+.footer-list {
+  list-style: none;
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+}
+
+.footer-list a,
+.social-link {
+  color: #e0f2ff;  // Xanh nhạt cho dễ đọc
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.footer-list a:hover,
+.social-link:hover {
+  color: $primary-color;  // Hover sáng nổi bật
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  color: #e0f2ff;
+}
+
+// Responsive footer
+@media (max-width: 768px) {
+  .footer-columns {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+// Sticky footer full height
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin-top: $header-height;
+  padding: 20px 0;  // Thêm padding cho content thoáng
+}
